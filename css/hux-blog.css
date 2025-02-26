@@ -1164,7 +1164,7 @@ samp {
   float: right;
 }
 .post-container .pager li.previous {
-  float: left;
+  float: right;
 }
 .post-container .pager li > a {
   width: 100%;
