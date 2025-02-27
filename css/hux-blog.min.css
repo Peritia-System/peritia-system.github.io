@@ -1722,6 +1722,20 @@ img::-moz-selection {
 .d-none {
   display: none !important;
 }
+.featured-tags-row {
+  text-align: center;
+}
+
+
+.featured-tags-row .tags {
+  font-size: 1.75em; /* Adjusts the font size to be similar to h3 */
+  font-weight: bold; /* Makes the text bolder like a heading */
+  line-height: 1.4; /* Adjusts line spacing if needed */
+  padding: 10px 0; /* Adds padding for better spacing */
+  margin: 0; /* Remove default margin */
+}
+
+
 .tags {
   margin-bottom: 5px;
   margin-left: 2px;
@@ -1736,7 +1750,7 @@ img::-moz-selection {
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   padding: 2px 10px 2px 10px;
-  color: var(--main-background-color);
+  color: var(--main-text-color);
   line-height: 24px;
   font-size: 12px;
   text-decoration: none;
