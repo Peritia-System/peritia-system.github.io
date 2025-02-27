@@ -91,6 +91,12 @@ html[data-theme="dark"] {
     --content-background-color: #e6e9ef;
   }
 }
+@media (min-width: 768px) {
+  .sidebar-container {
+    float: left;
+  }
+}
+
 @media (min-width: 1200px) {
   .post-container,
   .sidebar-container {

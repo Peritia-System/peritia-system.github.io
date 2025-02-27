@@ -1,6 +1,6 @@
 ---
 layout: alter-system
-title: "This a in Peritia 📝"
+title: "Miau"
 subtitle: "EH"
 author: "HynDuf"
 header-style: text
@@ -9,3 +9,8 @@ tags:
 category: 
   - Peritia-System
 ---
+
+# HEllo
+
+## Inspiration 
+this is a test
