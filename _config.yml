@@ -11,12 +11,22 @@ baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 # Publish posts or collection documents with a future date.
 future: true
 
+collections:
+  peritia:
+    output: true
+    permalink: /peritia/:path/
+
+
 # SNS settings
 RSS: true
 github_username: Peritia-System
 twitter_username: 
 facebook_username: 
 linkedin_username: 
+discord_username: peritia_system
+spotify_username: 315qb4nweztbmeqv5y6egtiybo5q
+mail_addresse: peritia@peritia.space
+
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
@@ -73,7 +83,7 @@ netease_comment: false
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "Your friendly neighbourhood <br/> DID-System <br/> Discord: peritia_system "
-sidebar-avatar: https://github.com/hynduf.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://github.com/peritia-system.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags

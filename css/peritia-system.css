@@ -1,0 +1,117 @@
+/* Global Styles */
+body {
+    font-size: 17px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    border: none;
+    line-height: 28px;
+    margin: 0;
+    background: var(--main-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh; /* Ensures the content is vertically centered */
+    padding: 20px;
+}
+
+/* Container for the category list */
+#category-list {
+    width: 100%;
+    max-width: 800px; /* Adjust max width for better readability */
+    margin: 0 auto;
+}
+
+/* System Roles Container */
+.system-roles-peritia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Controls space between boxes */
+    justify-content: center; /* Centers the content horizontally */
+    margin-top: 20px;
+}
+
+/* Individual System Role Box */
+.system-roles-peritia-box {
+    background-color: var(--surface0-color);
+    color: var(--main-text-color);
+    padding: 10px 20px;
+    border-radius: 25px; /* Rounded corners */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border: 2px solid var(--accent-color); /* Border around each box */
+}
+
+.system-roles-peritia-box:hover {
+    background-color: var(--accent-color-deep-background); /* Darkens on hover */
+    color: var(--accent-color-deep);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+}
+
+/* Style for the no-posts message */
+.no-posts {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.no-posts img {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.no-posts h1 {
+    font-size: 18px;
+    color: var(--main-text-color);
+}
+
+/* Additional Styles for Light & Dark Themes */
+html, html[data-theme="light"] {
+    --main-background-color: #eff1f5;
+    --main-darken-background-color: #bdc5d4;
+    --crust-background-color: #dce0e8;
+    --mantle-background-color: #e6e9ef;
+    --main-text-color: #4c4f69;
+    --subtext0-color: #6c6f85;
+    --surface0-color: #ccd0da;
+    --overlay1-color: #8c8fa1;
+    --overlay0-color: #9ca0b0;
+    --accent-color: #dc8a78;
+    --accent-color-background: #f6e2dd;
+    --accent-color-deep: #e64553;
+    --accent-color-deep-background: #f8ccd0;
+    --hr-color: #bcc0cc;
+    --link-color: #1e66f5;
+    --code-color: #c7254e;
+    --code-background-color: #f5dfe5;
+    --content-active-color: #8839ef;
+    --content-background-color: #e6e9ef;
+}
+
+html[data-theme="dark"] {
+    --main-background-color: #181825;
+    --main-darken-background-color: #000000;
+    --crust-background-color: #11111b;
+    --mantle-background-color: #181825;
+    --main-text-color: #cdd6f4;
+    --subtext0-color: #a6adc8;
+    --surface0-color: #313244;
+    --overlay1-color: #7f849c;
+    --overlay0-color: #6c7086;
+    --accent-color: #cba6f7;
+    --accent-color-background: #26074b;
+    --accent-color-deep: #89b4fa;
+    --accent-color-deep-background: #021635;
+    --hr-color: #45475a;
+    --link-color: #7287fd;
+    --code-color: #e55074;
+    --code-background-color: #2d161b;
+    --content-active-color: #fab387;
+    --content-background-color: #11111b;
+}

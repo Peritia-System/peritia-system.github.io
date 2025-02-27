@@ -1,0 +1,28 @@
+<body>
+    <h4>Get to know the System</h4>
+    <p>The Peritia-System is designed to provide an efficient and user-friendly platform for managing various tasks and processes. Whether you're looking for streamlined workflows, secure data handling, or intuitive navigation, Peritia-System ensures a seamless experience.</p>
+
+    <h5 class="category-header">Get to know the Alters:</h5>
+    <strong> ━━━━━━  ❖  ━━━━━━ </strong>
+
+    {%- assign list_pages = site.peritia -%}
+
+    <div id="category-list">
+        {% if list_pages.size > 0 %}
+            <div class="system-roles-peritia-container">
+                {%- for sub_page in list_pages -%}
+                    <a href="{{ sub_page.url | prepend: site.baseurl }}" class="system-roles-peritia-box">
+                        {{ sub_page.title }}
+                    </a>
+                {%- endfor -%}
+            </div>
+        {% else %}
+            <div class="no-posts">
+                <img src="{{ '/assets/img/sorry.png' | prepend: site.baseurl }}" alt="No posts found">
+                <h1>Sorry, No posts found</h1>
+            </div>
+        {% endif %}
+    <strong> ━━━━━━  ❖  ━━━━━━ </strong>
+
+    </div>
+</body>

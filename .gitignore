@@ -20,4 +20,5 @@ node_modules
 *.gem
 Gemfile.lock
 vendor_site
-
+*.kate-swp
+__Backup-Posts/*
