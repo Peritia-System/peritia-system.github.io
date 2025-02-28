@@ -1,0 +1,61 @@
+<!-- NOT IN USE RIGHT NOW!!! -->
+
+<hr style="visibility: hidden;">
+<ul class="pager">
+
+    {% assign current_directory = page.url | remove: site.baseurl %}
+    {% assign current_directory = current_directory | split: '/' | slice: 0, 4 | join: '/' %}
+
+    {% if page.previous.url %}
+        {% assign previous_directory = page.previous.url | remove: site.baseurl %}
+        {% assign previous_directory = previous_directory | split: '/' | slice: 0, 4 | join: '/' %}
+
+        {% if current_directory == previous_directory %}
+            <li class="previous">
+                <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+                    data-placement="top" title="{{ page.previous.title }}">
+                    Previous<br>
+                    <span>{{ page.previous.title }}</span>
+                </a>
+            </li>
+        {% endif %}
+    {% elsif page.url contains '/index' %}
+        <!-- If it's the index file, show the previous button linking to the folder above -->
+        {% assign parent_directory = current_directory | split: '/' | slice: 0, 3 | join: '/' %}
+        <li class="previous">
+            <a href="{{ parent_directory | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+                data-placement="top" title="Go to the parent directory">
+                Previous<br>
+                <span>Back to parent</span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if page.next.url %}
+        {% assign next_directory = page.next.url | remove: site.baseurl %}
+        {% assign next_directory = next_directory | split: '/' | slice: 0, 4 | join: '/' %}
+
+        {% if current_directory == next_directory %}
+            <li class="next">
+                <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+                    data-placement="top" title="{{ page.next.title }}">
+                    Next<br>
+                    <span>{{ page.next.title }}</span>
+                </a>
+            </li>
+        {% endif %}
+    {% elsif page.url contains '/index' %}
+        <!-- If it's the index file, show the next button leading to the next file in the directory -->
+        {% assign next_file = site.pages | where: "url", current_directory | first %}
+        {% assign next_file = site.pages | where: "url", current_directory | sort: 'date' | first %}
+        <li class="next">
+            <a href="{{ next_file.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+                data-placement="top" title="{{ next_file.title }}">
+                Next<br>
+                <span>{{ next_file.title }}</span>
+            </a>
+        </li>
+    {% endif %}
+
+</ul>
+<hr style="visibility: hidden;">

@@ -1,0 +1,15 @@
+<!-- List all documents in the current directory -->
+<div class="subdir-index-documents">
+    <h2>Documents in Current Directory</h2>
+    <ul>
+        {% assign current_dir = page.permalink | split: '/' | slice: 0, -1 | join: '/' %}
+        
+        {% for document in site.pages %}
+            {% assign doc_permalink = document.permalink | split: '/' | slice: 0, -1 | join: '/' %}
+            
+            {% if doc_permalink == current_dir %}
+                <li><a href="{{ document.url }}">{{ document.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

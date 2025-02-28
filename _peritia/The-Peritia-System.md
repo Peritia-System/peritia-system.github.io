@@ -1,13 +1,15 @@
 ---
-layout: alter-system
+layout: System-Index
 title: "This is in Peritia"
 subtitle: "EH"
+role: "none"
+role-index: "false"
+alter-index: "false"
 author: "HynDuf"
 header-style: text
-tags:
-  - eh
 category: 
   - Peritia-System
+permalink: /peritia/
 ---
 
 # HEllo

@@ -1,0 +1,19 @@
+<div class="related-files-by-alter">
+  <h3>Files written by {{ page.author }}:</h3>
+  
+  <div class="related-posts">
+      {% assign related_files = site.peritia | where: "author", page.author | sort: "date" | reverse %}
+      {% assign recent_files = related_files | slice: 0, 6 %} <!-- Get the most recent 6 files -->
+
+      {% for file in recent_files %}
+          {% if file.url != page.url %}
+              <a href="{{ file.url }}" class="related-post-box">
+                  <span class="related-post-title">{{ file.title }}</span>
+                  <i class="related-post-subtitle">{{ file.subtitle }}</i>
+                </a>
+                
+              </a>
+          {% endif %}
+      {% endfor %}
+  </div>
+</div>

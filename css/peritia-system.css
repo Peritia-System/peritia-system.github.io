@@ -1,85 +1,197 @@
-/* Global Styles */
-body {
-    /* font-size: 17px;
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: 500;
-    border: none;
-    background: var(--main-background-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100vh; 
-    padding: 20px; */
+/* System Roles Container */
+.system-roles-peritia-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.system-roles-peritia-box:hover {
+  background-color: var(--accent-color-deep-background);
+  color: var(--accent-color-deep);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the no-posts message */
+.peritia-no-posts {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.peritia-no-posts img {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+.peritia-no-posts h1 {
+  font-size: 18px;
+  color: var(--main-text-color);
 }
 
 /* Container for the Peritia System Info */
 .Peritia-System-Info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center content */
-    align-items: center; /* Horizontally center content */
-    text-align: center; /* Center text inside the container */
-    width: 100%;
-    max-width: 800px; /* Adjust max width for better readability */
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  align-items: center; /* Horizontally center content */
+  text-align: center; /* Center text inside the container */
+  width: 100%;
+  max-width: 800px; /* Adjust max width for better readability */
+  margin: 0 auto;
 }
 
-/* Container for the peritia-system-role list */
-#peritia-system-role-list {
-    width: 100%;
-    margin: 0 auto;
+/* System Role Group */
+.system-role-group {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-/* System Roles Container */
-.system-roles-peritia-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Reduces space between the boxes */
-    justify-content: center; /* Centers the content horizontally */
-    margin-top: 20px;
+.system-role-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-bottom: 5px;
+}
+
+/* Alters within a role */
+.system-role-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
 /* Individual System Role Box */
 .system-roles-peritia-box {
-    background-color: var(--surface0-color);
-    color: var(--main-text-color);
-    padding: 5px 15px;
-    border-radius: 20px; /* More rounded corners for a tag-like effect */
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border: 1px solid var(--accent-color); /* Border around each box */
-    white-space: nowrap; /* Prevents text wrapping inside the tag */
-    max-width: 150px; /* Ensures the boxes don't stretch too wide */
-    overflow: hidden; /* Hides overflowed text */
-    text-overflow: ellipsis; /* Adds an ellipsis when text is too long */
+  background-color: var(--surface0-color);
+  color: var(--main-text-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--accent-color);
+  white-space: nowrap;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.system-roles-peritia-box:hover {
-    background-color: var(--accent-color-deep-background); /* Darkens on hover */
-    color: var(--accent-color-deep);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+/*  */
+/* Peritia Related Author files */
+/*  */
+.related-files-by-alter {
+  margin-top: 20px;
+  text-align: center;
 }
 
-/* Style for the no-posts message */
-.no-posts {
-    text-align: center;
-    margin-top: 20px;
+.related-files-by-alter h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--main-text-color);
+  margin-bottom: 20px;
 }
 
-.no-posts img {
-    max-width: 150px;
-    margin-bottom: 10px;
+
+
+.related-post-box {
+  background-color: var(--surface0-color);
+  color: var(--main-text-color);
+  padding: 8px 10px; /* Reduced padding for smaller boxes */
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 12px; /* Smaller font size for better compactness */
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+  max-width: fit-content; /* Reduced max-width for smaller boxes */
+  max-height: fit-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--accent-color);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.no-posts h1 {
-    font-size: 18px;
-    color: var(--main-text-color);
+/* Hover effect for the related posts */
+.related-post-box:hover {
+  background-color: var(--accent-color-deep-background);
+  color: var(--accent-color-deep);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .related-post-box {
+      max-width: 100%; /* Make the box take full width on smaller screens */
+      padding: 6px 8px; /* Reduced padding further for mobile */
+  }
+  
+  .related-post-box h4 {
+      font-size: 12px; /* Even smaller font size for mobile */
+  }
+  
+  .related-post-box p {
+      font-size: 10px; /* Smaller subtitle font size for mobile */
+  }
+}
+
+
+/* Styling for the related posts container */
+.related-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+
+
+/* Title and subtitle for related posts */
+.related-post-box h4 {
+  margin: 10px 0;
+  font-size: 16px; /* Reduced font size */
+  color: var(--main-text-color) !important;
+  font-weight: bold;
+  display: block; 
+  text-align: center; 
+}
+
+
+.related-post-box p {
+  font-size: 12px;
+  color: var(--subtext0-color);
+  margin: 0;
+}
+.related-post-box h6 {
+  margin: 10px 0;
+  font-size: 17px !important; /* Reduced font size */
+  color: var(--main-text-color) !important;
+  font-weight: bold;
+  display: block; 
+  text-align: center; 
+}
+
+
+.related-post-title {
+  font-size: 16px; /* Increased font size */
+  font-weight: bold; /* Make it stand out */
+  color: var(--main-text-color);
+  text-align: center;
+  display: block;
+  margin-bottom: 5px; /* Adds some spacing */
+}
+
+.related-post-subtitle {
+  font-size: 12px; /* Keep the subtitle smaller */
+  color: var(--subtext0-color);
 }

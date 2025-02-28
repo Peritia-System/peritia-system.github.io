@@ -1,0 +1,93 @@
+
+
+
+/* System Roles Container */
+.system-roles-peritia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.system-roles-peritia-box:hover {
+    background-color: var(--accent-color-deep-background);
+    color: var(--accent-color-deep);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the no-posts message */
+.peritia-no-posts {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.peritia-no-posts img {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.peritia-no-posts h1 {
+    font-size: 18px;
+    color: var(--main-text-color);
+}
+
+/* Container for the Peritia System Info */
+.Peritia-System-Info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    text-align: center; /* Center text inside the container */
+    width: 100%;
+    max-width: 800px; /* Adjust max width for better readability */
+    margin: 0 auto;
+}
+
+
+
+/* System Role Group */
+.system-role-group {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.system-role-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+/* Alters within a role */
+.system-role-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Individual System Role Box */
+.system-roles-peritia-box {
+    background-color: var(--surface0-color);
+    color: var(--main-text-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--accent-color);
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+

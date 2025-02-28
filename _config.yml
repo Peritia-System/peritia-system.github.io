@@ -14,7 +14,7 @@ future: true
 collections:
   peritia:
     output: true
-    permalink: /peritia/:path/
+    permalink: /:collection/:path/
 
 
 # SNS settings

@@ -1,27 +1,38 @@
 <div id="peritia-system-list">
     <h4>Get to know the System</h4>
-    <p>Hi, If you want to learn more about the Alters look below otherwise read one of our Posts :D</p>
+    <p>Hi, If you want to learn more about the Alters, look below; otherwise, read one of our Posts :D</p>
 
     <h5 class="system-roles-peritia-header">Get to know the Alters:</h5>
     <strong> ━━━━━━  ❖  ━━━━━━ </strong>
 
-    {%- assign list_pages = site.peritia -%}
-
     <div id="system-roles-peritia">
-        {% if list_pages.size > 0 %}
-            <div class="system-roles-peritia-container">
-                {%- for sub_page in list_pages -%}
-                    <a href="{{ sub_page.url | prepend: site.baseurl }}" class="system-roles-peritia-box">
-                        {{ sub_page.title }}
-                    </a>
-                {%- endfor -%}
-            </div>
+        {% assign role_groups = site.peritia | group_by: "role" %}
+
+        {% if role_groups.size > 0 %}
+            {% for role_group in role_groups %}
+                {% assign role_main = role_group.items | where: "role-index", true | first %}
+                {% assign alters = role_group.items | where: "alter-index", true %}
+
+                {% if role_main %}
+                    <div class="system-role-group">
+                        <h3 class="system-role-title">
+                            <a href="{{ role_main.url }}">{{ role_main.title }}</a>
+                        </h3>
+                        <div class="system-role-members">
+                            {% for alter in alters %}
+                                <a class="system-roles-peritia-box" href="{{ alter.url }}">{{ alter.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
         {% else %}
-            <div class="no-posts">
-                <img src="{{ '/assets/img/sorry.png' | prepend: site.baseurl }}" alt="No posts found">
-                <h1>Sorry, No posts found</h1>
+            <div class="peritia-no-posts">
+                <p>Sorry, No roles found</p>
+                <img src="/assets/no-roles-found.png" alt="No roles found" />
             </div>
         {% endif %}
-    <strong> ━━━━━━  ❖  ━━━━━━ </strong>
     </div>
+
+    <strong> ━━━━━━  ❖  ━━━━━━ </strong>
 </div>
