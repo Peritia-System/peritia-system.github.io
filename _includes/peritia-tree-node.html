@@ -1,32 +1,84 @@
-{% assign parent_title = include.parent_title %}
-{% assign max_depth = 1000 %}
-{% assign current_depth = include.depth | default: 0 %}
-{% assign current_path = include.current_path %}
-
-{% if current_depth < max_depth %}
-  {% assign children = site.peritia | where: "parent", parent_title %}
-
-  {% if children.size > 0 %}
-    <ul class="peritia-system-index-dropdown">
+<ul class="peritia-tree">
+  {% assign parent_title = include.parent_title %}
+  {% assign max_depth = 1000 %}
+  {% assign current_depth = include.depth | default: 0 %}
+  {% assign current_path = include.current_path %}
+  
+  {% if current_depth < max_depth %}
+    {% assign children = site.peritia | where: "parent", parent_title %}
+    
+    {% if children.size > 0 %}
       {% for child in children %}
-        {% if child.url contains current_path %}
-          <li class="peritia-system-index-dropdown-item">
-            <div class="peritia-system-index-item">
-              <a href="{{ child.url }}" class="peritia-system-index-link">
-                {{ child.title }}
-              </a>
-              {% if child.subtitle %}
-                <div class="peritia-system-index-subtitle">{{ child.subtitle }}</div>
+        {% assign child_url = child.url %}
+        
+        <!-- Filter only children that are in the current path or below -->
+        {% if child_url contains current_path %}
+          {% assign grandchildren = site.peritia | where: "parent", child.title %}
+          {% assign has_grandchildren = grandchildren.size > 0 %}
+          
+          <li>
+            <div class="tree-item">
+              {% if has_grandchildren %}
+                <button class="toggle-btn" onclick="toggleDropdown(this)">
+                  &#9654;
+                </button>
               {% endif %}
-              <button class="peritia-system-index-toggle-btn" aria-label="Toggle dropdown">▼</button>
+              <a href="{{ child.url }}">{{ child.title }}</a>
+
+              {% if child.subtitle %}
+                <span class="subtitle">{{ child.subtitle }}</span>
+              {% endif %}
             </div>
-            <div class="peritia-system-index-dropdown-content">
-              {% assign new_depth = current_depth | plus: 1 %}
-              {% include peritia-tree-node.html parent_title=child.title depth=new_depth current_path=current_path %}
-            </div>
+            
+            {% if has_grandchildren %}
+              <ul class="nested">
+                {% assign new_depth = current_depth | plus: 1 %}
+                {% include peritia-tree-node.html parent_title=child.title depth=new_depth current_path=current_path %}
+              </ul>
+            {% endif %}
           </li>
         {% endif %}
       {% endfor %}
-    </ul>
+    {% endif %}
   {% endif %}
-{% endif %}
+</ul>
+
+<style>
+  .peritia-tree {
+    list-style: none;
+    padding-left: 10px;
+  }
+  .tree-item {
+    display: flex;
+    align-items: center;
+  }
+  .toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .nested {
+    display: none;
+    padding-left: 20px;
+  }
+  .nested.active {
+    display: block;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: gray;
+    margin-left: 10px;
+  }
+</style>
+
+<script>
+  function toggleDropdown(button) {
+    let nestedList = button.parentElement.parentElement.querySelector(".nested");
+    if (nestedList) {
+      nestedList.classList.toggle("active");
+      button.innerHTML = nestedList.classList.contains("active") ? "&#9660;" : "&#9654;";
+    }
+  }
+</script>
