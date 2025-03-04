@@ -1,0 +1,193 @@
+{% assign tree_html = "" %}
+{% assign best_tree_html = "" %}
+{% assign max_child_count = 0 %}
+
+<div class="peritia-index-container">
+  <ul class="peritia-index-tree">
+    <!-- Find the root page first -->
+    {% assign root_page = site.peritia | where: "parent", "root" | first %}
+    {% if root_page %}
+      {% assign root_tree_html = "" %}
+      {% assign root_child_count = 0 %}
+      {% assign root_tree_html = root_tree_html | append: '<li class="peritia-index-item">' %}
+      {% assign root_tree_html = root_tree_html | append: '<span class="peritia-index-title">' | append: root_page.title | append: '</span>' %}
+      {% assign root_tree_html = root_tree_html | append: '<ul class="peritia-index-subtree">' %}
+      
+      <!-- Render child pages of the root -->
+      {% assign system_pages = site.peritia | where: "parent", root_page.title %}
+      {% for page in system_pages %}
+        {% assign root_child_count = root_child_count | plus: 1 %}
+        {% assign root_tree_html = root_tree_html | append: '<li class="peritia-index-item">' %}
+        {% assign root_tree_html = root_tree_html | append: '<a href="' | append: page.url | append: '" class="peritia-index-link">' | append: page.title | append: '</a>' %}
+        
+        <!-- Render child pages of system pages -->
+        {% assign children = site.peritia | where: "parent", page.title %}
+        {% if children.size > 0 %}
+          {% assign root_child_count = root_child_count | plus: children.size %}
+          {% assign root_tree_html = root_tree_html | append: '<ul class="peritia-index-subtree">' %}
+          {% for child in children %}
+            {% assign root_child_count = root_child_count | plus: 1 %}
+            {% assign root_tree_html = root_tree_html | append: '<li class="peritia-index-item">' %}
+            {% assign root_tree_html = root_tree_html | append: '<a href="' | append: child.url | append: '" class="peritia-index-link">' | append: child.title | append: '</a>' %}
+            
+            <!-- Render grandchild pages if any -->
+            {% assign grand_children = site.peritia | where: "parent", child.title %}
+            {% if grand_children.size > 0 %}
+              {% assign root_child_count = root_child_count | plus: grand_children.size %}
+              {% assign root_tree_html = root_tree_html | append: '<ul class="peritia-index-subtree">' %}
+              {% for grand_child in grand_children %}
+                {% assign root_child_count = root_child_count | plus: 1 %}
+                {% assign root_tree_html = root_tree_html | append: '<li class="peritia-index-item">' %}
+                {% assign root_tree_html = root_tree_html | append: '<a href="' | append: grand_child.url | append: '" class="peritia-index-link">' | append: grand_child.title | append: '</a>' %}
+                {% assign root_tree_html = root_tree_html | append: '</li>' %}
+              {% endfor %}
+              {% assign root_tree_html = root_tree_html | append: '</ul>' %}
+            {% endif %}
+            
+            {% assign root_tree_html = root_tree_html | append: '</li>' %}
+          {% endfor %}
+          {% assign root_tree_html = root_tree_html | append: '</ul>' %}
+        {% endif %}
+        
+        {% assign root_tree_html = root_tree_html | append: '</li>' %}
+      {% endfor %}
+      {% assign root_tree_html = root_tree_html | append: '</ul>' %}
+      {% assign root_tree_html = root_tree_html | append: '</li>' %}
+      
+      {% if root_child_count > max_child_count %}
+        {% assign max_child_count = root_child_count %}
+        {% assign best_tree_html = root_tree_html %}
+      {% endif %}
+    {% endif %}
+
+    <!-- Now loop through other groups by parent, excluding root and system -->
+    {% assign pages_by_parent = site.peritia | group_by: "parent" %}
+    {% for parent_group in pages_by_parent %}
+      {% if parent_group.name != "root" and parent_group.name != "system" %}
+        {% assign group_tree_html = "" %}
+        {% assign group_child_count = 0 %}
+        {% assign group_tree_html = group_tree_html | append: '<li class="peritia-index-item">' %}
+        {% assign group_tree_html = group_tree_html | append: '<span class="peritia-index-title">' | append: parent_group.name | append: '</span>' %}
+        {% assign group_tree_html = group_tree_html | append: '<ul class="peritia-index-subtree">' %}
+        
+        {% for page in parent_group.items %}
+          {% assign group_child_count = group_child_count | plus: 1 %}
+          {% assign group_tree_html = group_tree_html | append: '<li class="peritia-index-item">' %}
+          {% assign group_tree_html = group_tree_html | append: '<a href="' | append: page.url | append: '" class="peritia-index-link">' | append: page.title | append: '</a>' %}
+          
+          <!-- Check for child pages and render them -->
+          {% assign children = site.peritia | where: "parent", page.title %}
+          {% if children.size > 0 %}
+            {% assign group_child_count = group_child_count | plus: children.size %}
+            {% assign group_tree_html = group_tree_html | append: '<ul class="peritia-index-subtree">' %}
+            {% for child in children %}
+              {% assign group_child_count = group_child_count | plus: 1 %}
+              {% assign group_tree_html = group_tree_html | append: '<li class="peritia-index-item">' %}
+              {% assign group_tree_html = group_tree_html | append: '<a href="' | append: child.url | append: '" class="peritia-index-link">' | append: child.title | append: '</a>' %}
+              
+              <!-- Check for grandchild pages and render them -->
+              {% assign grand_children = site.peritia | where: "parent", child.title %}
+              {% if grand_children.size > 0 %}
+                {% assign group_child_count = group_child_count | plus: grand_children.size %}
+                {% assign group_tree_html = group_tree_html | append: '<ul class="peritia-index-subtree">' %}
+                {% for grand_child in grand_children %}
+                  {% assign group_child_count = group_child_count | plus: 1 %}
+                  {% assign group_tree_html = group_tree_html | append: '<li class="peritia-index-item">' %}
+                  {% assign group_tree_html = group_tree_html | append: '<a href="' | append: grand_child.url | append: '" class="peritia-index-link">' | append: grand_child.title | append: '</a>' %}
+                  {% assign group_tree_html = group_tree_html | append: '</li>' %}
+                {% endfor %}
+                {% assign group_tree_html = group_tree_html | append: '</ul>' %}
+              {% endif %}
+              
+              {% assign group_tree_html = group_tree_html | append: '</li>' %}
+            {% endfor %}
+            {% assign group_tree_html = group_tree_html | append: '</ul>' %}
+          {% endif %}
+          
+          {% assign group_tree_html = group_tree_html | append: '</li>' %}
+        {% endfor %}
+        {% assign group_tree_html = group_tree_html | append: '</ul>' %}
+        {% assign group_tree_html = group_tree_html | append: '</li>' %}
+        
+        {% if group_child_count > max_child_count %}
+          {% assign max_child_count = group_child_count %}
+          {% assign best_tree_html = group_tree_html %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- Finally, render the tree with the most children and grandchildren -->
+{{ best_tree_html }}
+
+<style>
+/* Scoped styles for the peritia tree structure */
+.peritia-index-container {
+  margin: 20px;
+}
+
+.peritia-index-tree {
+  list-style-type: none;
+  padding-left: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.peritia-index-item {
+  margin: 5px 0;
+  position: relative;
+}
+
+.peritia-index-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: inline-block;
+  padding-left: 5px;
+}
+
+.peritia-index-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.peritia-index-subtree {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 5px;
+  border-left: 2px solid #ccc;
+  padding-left: 15px;
+  margin-left: 10px;
+}
+
+.peritia-index-item:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 8px;
+  border-left: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+.peritia-index-item:first-child:before {
+  border-top: none;
+  top: 0;
+}
+
+.peritia-index-subtree > .peritia-index-item:before {
+  top: 8px;
+}
+
+.peritia-index-item:last-child:before {
+  border-left: none;
+  border-bottom: none;
+}
+
+.peritia-index-link:hover {
+  color: #007BFF;
+}
+</style>

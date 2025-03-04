@@ -6,8 +6,9 @@ role: Host
 role-index: false
 alter-index: false
 author: Selena
+parent: Selena
 header-style: text
-category: 
+category:
    - Peritia-System
 permalink: /peritia/host/selena/a-letter-from/
 ---

@@ -33,6 +33,13 @@ filler_data = {
     "Rust": "This is a filler content for Rust, explaining his role and backstory."
 }
 
+# Extra files for specific alters
+extra_files = {
+    "Selena": ["funfacts.md"],
+    "Mergan": [],
+    "Rust": []
+}
+
 # Iterate through each group and their alters
 for group, alters in sorted(groups.items()):  # Sort groups alphabetically
     # Create a index-directory for each group (e.g., _peritia/Host)
@@ -40,14 +47,13 @@ for group, alters in sorted(groups.items()):  # Sort groups alphabetically
 
     # Create the index.md for the group
     group_content = f"""---
-layout: System-Index
+layout: default
 title: {group}
 subtitle: {group} System
 role: {group}
 role-index: true
 alter-index: false
 author: System
-parent: "This is Peritia"
 header-style: text
 category:
    - Peritia-System
@@ -82,7 +88,34 @@ permalink: /peritia/{group.lower()}/{alter.lower()}/
 """
         create_index_file(alter_path, alter_content)
 
-        # Create unique files for each alter, and sort the keys (unique file titles) to ensure order
+        # Create additional files for specific alters like "funfacts.md" for Selena
+        for extra_file in extra_files.get(alter, []):
+            file_content = f"""---
+layout: alter-system
+title: {extra_file.replace('.md', '').replace('-', ' ').title()} {alter}
+subtitle: Some unique content for {alter}
+role: {group}
+role-index: false
+alter-index: false
+author: {alter}
+parent: {alter}
+header-style: text
+category:
+   - Peritia-System
+permalink: /peritia/{group.lower()}/{alter.lower()}/{extra_file.replace('.md', '').replace(' ', '-').lower()}/
+---
+# {extra_file.replace('.md', '').replace('-', ' ').title()} {alter}
+
+Unique content for {alter} goes here...
+"""
+            file_path = os.path.join(alter_path, extra_file)
+            create_file(file_path, file_content)
+
+        # Create the "Stories" subdirectory for each alter
+        stories_path = os.path.join(alter_path, "Stories")
+        os.makedirs(stories_path, exist_ok=True)
+
+        # Create unique files (e.g., a-letter-from-{alter}.md) in the Stories subdirectory
         for file_title, file_description in sorted(unique_files.items()):  # Sort file titles alphabetically
             file_content = f"""---
 layout: alter-system
@@ -96,13 +129,23 @@ parent: {alter}
 header-style: text
 category:
    - Peritia-System
-permalink: /peritia/{group.lower()}/{alter.lower()}/{file_title.replace(' ', '-').lower()}/
+permalink: /peritia/{group.lower()}/{alter.lower()}/stories/{file_title.replace(' ', '-').lower()}/
 ---
 # {file_title} {alter}
 
 {file_description.format(alter=alter)} content goes here...
 """
-            file_path = os.path.join(alter_path, f"{file_title.replace(' ', '-').lower()}-{alter.lower()}.md")
+            file_path = os.path.join(stories_path, f"{file_title.replace(' ', '-').lower()}-{alter.lower()}.md")
             create_file(file_path, file_content)
+
+        # If the alter is Rust, create the "fights" subdirectory and files
+        if alter == "Rust":
+            fights_path = os.path.join(alter_path, "fights")
+            os.makedirs(fights_path, exist_ok=True)
+
+            fights_files = ["Day36.md", "iambetter.md"]
+            for fight_file in fights_files:
+                fight_file_path = os.path.join(fights_path, fight_file)
+                create_file(fight_file_path, f"---\nlayout: alter-system\ntitle: {fight_file.replace('.md', '')}\nsubtitle: Fight content\nrole: {group}\nrole-index: false\nalter-index: false\nauthor: Rust\nparent: Rust\nheader-style: text\ncategory:\n  - Peritia-System\npermalink: /peritia/{group.lower()}/{alter.lower()}/fights/{fight_file.replace('.md', '').lower()}/\n---\n# {fight_file.replace('.md', '')}\nContent about {fight_file.replace('.md', '')} goes here...\n")
 
 print("Index.md and unique files created successfully!")

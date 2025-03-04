@@ -1,13 +1,14 @@
 ---
-layout: default
+layout: System-Index
 title: Host
 subtitle: Host System
 role: Host
 role-index: true
 alter-index: false
 author: System
+parent: "This is Peritia"
 header-style: text
-category: 
+category:
    - Peritia-System
 permalink: /peritia/host/
 ---

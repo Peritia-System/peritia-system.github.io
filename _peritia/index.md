@@ -1,11 +1,12 @@
 ---
 layout: System-Index
-title: "This is in Peritia"
+title: "This is Peritia"
 subtitle: "EH"
 role: "none"
 role-index: "false"
 alter-index: "false"
 author: "HynDuf"
+parent: null
 header-style: text
 category: 
   - Peritia-System

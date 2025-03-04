@@ -6,8 +6,9 @@ role: Protector
 role-index: false
 alter-index: false
 author: Rust
+parent: Rust
 header-style: text
-category: 
+category:
    - Peritia-System
 permalink: /peritia/protector/rust/a-personal-message-from/
 ---

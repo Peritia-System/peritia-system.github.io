@@ -6,10 +6,11 @@ role: Host
 role-index: false
 alter-index: true
 author: Selena
+parent: Host
 header-style: text
-category: 
+category:
    - Peritia-System
 permalink: /peritia/host/selena/
 ---
 # Selena
-Content for the Selena alter.
+This is a filler content for Selena, explaining her role and backstory.

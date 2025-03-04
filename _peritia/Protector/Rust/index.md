@@ -6,10 +6,11 @@ role: Protector
 role-index: false
 alter-index: true
 author: Rust
+parent: Protector
 header-style: text
-category: 
+category:
    - Peritia-System
 permalink: /peritia/protector/rust/
 ---
 # Rust
-Content for the Rust alter.
+This is a filler content for Rust, explaining his role and backstory.

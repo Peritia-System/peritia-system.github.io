@@ -6,8 +6,9 @@ role: Host
 role-index: false
 alter-index: false
 author: Mergan
+parent: Mergan
 header-style: text
-category: 
+category:
    - Peritia-System
 permalink: /peritia/host/mergan/a-personal-message-from/
 ---

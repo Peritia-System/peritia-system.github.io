@@ -1,0 +1,32 @@
+{% assign parent_title = include.parent_title %}
+{% assign max_depth = 1000 %}
+{% assign current_depth = include.depth | default: 0 %}
+{% assign current_path = include.current_path %}
+
+{% if current_depth < max_depth %}
+  {% assign children = site.peritia | where: "parent", parent_title %}
+
+  {% if children.size > 0 %}
+    <ul class="peritia-system-index-dropdown">
+      {% for child in children %}
+        {% if child.url contains current_path %}
+          <li class="peritia-system-index-dropdown-item">
+            <div class="peritia-system-index-item">
+              <a href="{{ child.url }}" class="peritia-system-index-link">
+                {{ child.title }}
+              </a>
+              {% if child.subtitle %}
+                <span class="peritia-system-index-subtitle">{{ child.subtitle }}</span>
+              {% endif %}
+              <button class="peritia-system-index-toggle-btn" aria-label="Toggle dropdown">▼</button>
+            </div>
+            <div class="peritia-system-index-dropdown-content">
+              {% assign new_depth = current_depth | plus: 1 %}
+              {% include peritia-tree-node.html parent_title=child.title depth=new_depth current_path=current_path %}
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endif %}

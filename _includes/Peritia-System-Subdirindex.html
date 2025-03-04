@@ -1,15 +1,27 @@
-<!-- List all documents in the current directory -->
-<div class="subdir-index-documents">
-    <h2>Documents in Current Directory</h2>
-    <ul>
-        {% assign current_dir = page.permalink | split: '/' | slice: 0, -1 | join: '/' %}
-        
-        {% for document in site.pages %}
-            {% assign doc_permalink = document.permalink | split: '/' | slice: 0, -1 | join: '/' %}
-            
-            {% if doc_permalink == current_dir %}
-                <li><a href="{{ document.url }}">{{ document.title }}</a></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+<div class="peritia-index-container">
+    <h4>
+        $tree 
+        <a href="/peritia/">peritia-system</a>
+    </h4>
+    {% include peritia-tree-node.html parent_title="This is Peritia" depth=0 current_path=page.url %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const toggleButtons = document.querySelectorAll('.peritia-system-index-toggle-btn');
+          
+          toggleButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+              // Prevent the click from bubbling to the link
+              event.stopPropagation();
+              
+              // Find the closest parent item and toggle the 'active' class to control visibility of the dropdown
+              const parentItem = this.closest('.peritia-system-index-dropdown-item');
+              parentItem.classList.toggle('active');
+            });
+          });
+        });
+      </script>
+      
+      
 </div>
+
+    
