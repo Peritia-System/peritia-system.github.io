@@ -5,21 +5,21 @@
     </h4>
     {% include peritia-tree-node.html parent_title="This is Peritia" depth=0 current_path=page.url %}
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const toggleButtons = document.querySelectorAll('.peritia-system-index-toggle-btn');
-          
-          toggleButtons.forEach(button => {
-            button.addEventListener('click', function (event) {
-              // Prevent the click from bubbling to the link
-              event.stopPropagation();
-              
-              // Find the closest parent item and toggle the 'active' class to control visibility of the dropdown
-              const parentItem = this.closest('.peritia-system-index-dropdown-item');
-              parentItem.classList.toggle('active');
-            });
-          });
-        });
-      </script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButtons = document.querySelectorAll('.peritia-system-index-toggle-btn');
+    
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function (event) {
+        // Prevent the click from bubbling to the link
+        event.stopPropagation();
+        
+        // Find the closest parent item and toggle the 'active' class to control visibility of the dropdown
+        const parentItem = this.closest('.peritia-system-index-dropdown-item');
+        parentItem.classList.toggle('active');
+      });
+    });
+  });
+</script>
       
       
 </div>

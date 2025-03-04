@@ -455,3 +455,103 @@
 .peritia-system-index-toggle-btn:hover {
   background-color: var(--accent-color-background);
 }
+/* Style for the main container */
+.peritia-system-index-container {
+  background-color: var(--main-background-color);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Style for the main item (including the link and subtitle) */
+.peritia-system-index-item {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Style for the dropdown button (small arrow) */
+.peritia-system-index-toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--main-text-color);
+  padding: 0 5px;
+  border-radius: 50%;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+/* Style for the links */
+.peritia-system-index-link {
+  color: var(--main-text-color);
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+/* Style for when the link is hovered */
+.peritia-system-index-link:hover {
+  background-color: var(--accent-color-background);
+}
+
+/* Style for the subtitle under each link */
+.peritia-system-index-subtitle {
+  font-size: 12px;
+  color: var(--main-text-color);
+  margin-left: 20px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Style for the dropdown content */
+.peritia-system-index-dropdown-content {
+  display: none; /* Hide dropdown content by default */
+  list-style-type: none;
+  padding-left: 20px;
+  background-color: var(--surface0-color);
+  border-left: 2px solid var(--overlay0-color);
+  border-radius: 4px;
+}
+
+/* Style for each dropdown item */
+.peritia-system-index-dropdown-content li {
+  padding: 5px 0;
+}
+
+/* Style for links inside the dropdown content */
+.peritia-system-index-dropdown-content li a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+/* Hover effect for links inside dropdown */
+.peritia-system-index-dropdown-content li a:hover {
+  color: var(--accent-color);
+}
+
+/* Add transition effect for smooth dropdown */
+.peritia-system-index-dropdown-content {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Show the dropdown when the active class is added */
+.peritia-system-index-dropdown-item.active .peritia-system-index-dropdown-content {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Style for the dropdown container */
+.peritia-system-index-dropdown {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add hover effect to the toggle button */
+.peritia-system-index-toggle-btn:hover {
+  background-color: var(--accent-color-background);
+}
