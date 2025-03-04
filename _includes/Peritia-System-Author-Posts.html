@@ -1,5 +1,5 @@
 <div class="related-files-by-alter">
-  <h3>Files written by {{ page.author }}:</h3>
+  <a class="related-post-title">Files written by {{ page.author }}:</a>
   
   <div class="related-posts">
       {% assign related_files = site.peritia | where: "author", page.author | sort: "date" | reverse %}
