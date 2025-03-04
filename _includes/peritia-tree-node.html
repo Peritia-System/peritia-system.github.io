@@ -13,15 +13,17 @@
         
         <!-- Filter only children that are in the current path or below -->
         {% if child_url contains current_path %}
-          {% assign grandchildren = site.peritia | where: "parent", child.title %}
-          {% assign has_grandchildren = grandchildren.size > 0 %}
+          {% assign grandchildren = site.peritia | where: "parent" , child.title %}
+          {% assign has_grandchildren = grandchildren | size | minus: 0 %}
           
           <li>
             <div class="tree-item">
-              {% if has_grandchildren %}
+              {% if has_grandchildren > 0 %}
                 <button class="toggle-btn" onclick="toggleDropdown(this)">
                   &#9654;
                 </button>
+              {% else %}
+                <span class="empty-toggle"></span> <!-- Placeholder for alignment -->
               {% endif %}
               <a href="{{ child.url }}">{{ child.title }}</a>
 
@@ -30,7 +32,7 @@
               {% endif %}
             </div>
             
-            {% if has_grandchildren %}
+            {% if has_grandchildren > 0 %}
               <ul class="nested">
                 {% assign new_depth = current_depth | plus: 1 %}
                 {% include peritia-tree-node.html parent_title=child.title depth=new_depth current_path=current_path %}
@@ -44,33 +46,74 @@
 </ul>
 
 <style>
-  .peritia-tree {
-    list-style: none;
-    padding-left: 10px;
-  }
+.peritia-tree {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface0-color);
+  color: var(--main-text-color);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--accent-color);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.tree-item:hover {
+  background-color: var(--accent-color-deep-background);
+  color: var(--accent-color-deep);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+  color: var(--main-text-color);
+}
+
+.nested {
+  display: none;
+  padding-left: 15px;
+}
+
+.nested.active {
+  display: block;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--subtext0-color);
+  margin-left: 10px;
+}
+
+.empty-toggle {
+  width: 14px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
   .tree-item {
-    display: flex;
-    align-items: center;
-  }
-  .toggle-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 5px;
-  }
-  .nested {
-    display: none;
-    padding-left: 20px;
-  }
-  .nested.active {
-    display: block;
-  }
-  .subtitle {
+    padding: 4px 8px;
     font-size: 12px;
-    color: gray;
-    margin-left: 10px;
   }
+
+  .subtitle {
+    font-size: 10px;
+  }
+}
+
 </style>
 
 <script>
