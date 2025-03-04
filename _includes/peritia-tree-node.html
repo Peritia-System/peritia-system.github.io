@@ -11,28 +11,26 @@
       {% for child in children %}
         {% assign child_url = child.url %}
         
-        <!-- Filter only children that are in the current path or below -->
         {% if child_url contains current_path %}
-          {% assign grandchildren = site.peritia | where: "parent" , child.title %}
-          {% assign has_grandchildren = grandchildren | size | minus: 0 %}
+          {% assign grandchildren = site.peritia | where: "parent", child.title %}
+          {% assign has_grandchildren = grandchildren.size > 0 %}
           
           <li>
             <div class="tree-item">
-              {% if has_grandchildren > 0 %}
+              <a href="{{ child.url }}">{{ child.title }}</a>
+              {% if child.subtitle %}
+                <p class="subtitle">{{ child.subtitle }}</p>
+              {% endif %}
+              {% if has_grandchildren %}
                 <button class="toggle-btn" onclick="toggleDropdown(this)">
                   &#9654;
                 </button>
               {% else %}
                 <span class="empty-toggle"></span> <!-- Placeholder for alignment -->
               {% endif %}
-              <a href="{{ child.url }}">{{ child.title }}</a>
-
-              {% if child.subtitle %}
-                <span class="subtitle">{{ child.subtitle }}</span>
-              {% endif %}
             </div>
             
-            {% if has_grandchildren > 0 %}
+            {% if has_grandchildren %}
               <ul class="nested">
                 {% assign new_depth = current_depth | plus: 1 %}
                 {% include peritia-tree-node.html parent_title=child.title depth=new_depth current_path=current_path %}
@@ -45,15 +43,17 @@
   {% endif %}
 </ul>
 
+
 <style>
-  .peritia-tree {
+ .peritia-tree {
   list-style: none;
   padding-left: 10px;
 }
 
 .tree-item {
   display: flex;
-  flex-direction: column; /* Stack title and subtitle */
+  align-items: center;
+  justify-content: space-between; /* Puts button on the right */
   background-color: var(--surface0-color);
   color: var(--main-text-color);
   padding: 6px 10px;
@@ -78,8 +78,14 @@
   border: none;
   cursor: pointer;
   font-size: 14px;
-  margin-right: 5px;
   color: var(--main-text-color);
+  margin-left: 10px; /* Space before the button */
+}
+
+.empty-toggle {
+  width: 14px;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .nested {
@@ -95,36 +101,55 @@
   font-size: 12px;
   color: var(--subtext0-color);
   font-style: italic;
-  margin-top: 3px; /* Space between title and subtitle */
-  margin-left: 20px;
+  margin-top: 3px;
 }
 
-.empty-toggle {
-  width: 14px;
-  display: inline-block;
-  margin-right: 5px;
+.show-all-btn {
+  background-color: var(--accent-color);
+  color: var(--main-text-color);
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
-  .tree-item {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-  .subtitle {
-    font-size: 10px;
-    margin-left: 10px;
-  }
+.show-all-btn:hover {
+  background-color: var(--accent-color-deep);
+  color: var(--surface0-color);
 }
 
 </style>
 
 <script>
-  function toggleDropdown(button) {
-    let nestedList = button.parentElement.parentElement.querySelector(".nested");
-    if (nestedList) {
-      nestedList.classList.toggle("active");
-      button.innerHTML = nestedList.classList.contains("active") ? "&#9660;" : "&#9654;";
-    }
+function toggleDropdown(button) {
+  let nestedList = button.parentElement.nextElementSibling;
+  if (nestedList) {
+    nestedList.classList.toggle("active");
+    button.innerHTML = nestedList.classList.contains("active") ? "&#9660;" : "&#9654;";
   }
+}
+
+function toggleAll() {
+  let allNested = document.querySelectorAll(".nested");
+  let allButtons = document.querySelectorAll(".toggle-btn");
+  let isCollapsed = [...allNested].some(n => !n.classList.contains("active"));
+
+  allNested.forEach(nested => {
+    if (isCollapsed) {
+      nested.classList.add("active");
+    } else {
+      nested.classList.remove("active");
+    }
+  });
+
+  allButtons.forEach(button => {
+    button.innerHTML = isCollapsed ? "&#9660;" : "&#9654;";
+  });
+
+  document.querySelector(".show-all-btn").innerText = isCollapsed ? "Collapse All" : "Show All";
+}
+
 </script>

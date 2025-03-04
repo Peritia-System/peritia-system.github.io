@@ -1,12 +1,8 @@
 <div class="peritia-index-container">
-    <h4>
-        $tree 
-        <a href="/peritia/">peritia-system</a>
-    </h4>
-    {% include peritia-tree-node.html parent_title="This is Peritia" depth=0 current_path=page.url %}
-    
-      
-      
+  <h4>
+      $tree 
+      <a href="/peritia/">peritia-system</a>
+  </h4>
+  <button class="show-all-btn" onclick="toggleAll()">Show All</button>
+  {% include peritia-tree-node.html parent_title="This is Peritia" depth=0 current_path=page.url %}
 </div>
-
-    
