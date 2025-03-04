@@ -1,0 +1,7 @@
+{% assign non_index_files = site.peritia | where_exp: "item", "item.name != 'index.md'" %}
+{% assign random_file = non_index_files | sample %}
+
+<div class="lucky-container">
+    <p>Random picked file: <a href="{{ random_file.url }}">{{ random_file.title }}</a></p>
+    <button onclick="location.reload();">Try Another</button>
+</div>
