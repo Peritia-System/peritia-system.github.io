@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: standard-post
 title: "Introduction"
 subtitle: "Who are we what is to expect"
 author: "Mergan"
@@ -8,3 +8,5 @@ tags:
   - Life
   - Peritia-System
 ---
+
+# Hi

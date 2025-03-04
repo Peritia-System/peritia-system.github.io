@@ -3,7 +3,7 @@
   
   <div class="related-posts">
       {% assign related_files = site.peritia | where: "author", page.author | sort: "date" | reverse %}
-      {% assign recent_files = related_files | slice: 0, 6 %} <!-- Get the most recent 6 files -->
+      {% assign recent_files = related_files | slice: 0, 4 %} <!-- Get the most recent 4 files -->
 
       {% for file in recent_files %}
           {% if file.url != page.url %}
