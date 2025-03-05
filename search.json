@@ -2,13 +2,13 @@
 layout: null
 ---
 [
-  {% assign all_posts = site.peritia | concat: site.posts %}
+  {% assign all_posts = site.peritia | concat: site.posts | concat: site.wiki %}
   {% for post in all_posts %}
     {
-      "title"    : "{{ post.title | escape }}",                
-      "subtitle" : "{{ post.subtitle | escape }}",             
-      "author"   : "{{ post.author | escape }}",          
-      "tags"     : "{% if post.tags.size > 0 %}{{ post.tags | join: ', ' }}{% else %}No Tags{% endif %}", 
+      "title"    : "{{ post.title | escape }}",
+      "subtitle" : "{{ post.subtitle | escape }}",
+      "author"   : "{{ post.author | escape }}",
+      "tags"     : "{% if post.tags.size > 0 %}{{ post.tags | join: ', ' }}{% else %}No Tags{% endif %}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{% if post.date %}{{ post.date | date: '%Y-%m-%d' }}{% else %}No Date{% endif %}"
     }
