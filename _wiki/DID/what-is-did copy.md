@@ -4,12 +4,14 @@ title: "What is DID"
 subtitle: "No we don't kill people and then not remember that we did...
 Alteast not to our Knowledge"
 role: "none"
-author: "System"
-parent: null
+author: "wiki"
+parent: DID
 header-style: text
 tags:
   - Life
   - Peritia-System
+page_number: 2
+disabled: false
 permalink: /wiki/did/what-is-did
 ---
 

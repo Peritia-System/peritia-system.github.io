@@ -1,0 +1,12 @@
+<div class="wiki-index-container">
+  <h4>
+      $tree 
+      <a href="/wiki/">Wiki</a>
+  </h4>
+  <button class="show-all-btn" onclick="toggleAll()">Show All</button>
+  {% include wiki-tree-node.html parent_title=wiki depth=0 current_path=page.url %}
+
+<!-- not properly implemented -->
+  <!-- {% include i-feel-lucky.html %} -->
+
+</div>

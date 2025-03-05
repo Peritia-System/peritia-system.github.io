@@ -30,28 +30,50 @@ layout: default
                     <strong> ━━━━━━  ❖  ━━━━━━ </strong>
                 </div>
 
+                {% assign pages_sorted = site.wiki | where: "disabled", false | sort: 'page_number' %}
                 <hr style="visibility: hidden;">
                 <ul class="pager">
-                    {% if page.previous.url %}
+                  {% assign current_page_number = page.page_number %}
+                  {% assign next_page = null %}
+                  {% assign previous_page = null %}
+                  {% assign prev_url = "" %}
+                  {% assign next_url = "" %}
+                
+                  {% for p in pages_sorted %}
+                    {% if p.page_number == current_page_number %}
+                      {% assign next_page = forloop.index0 | plus: 1 %}
+                      {% assign previous_page = forloop.index0 | minus: 1 %}
+                    {% endif %}
+                  {% endfor %}
+                
+                  {% if previous_page >= 0 %}
+                    {% assign prev_url = pages_sorted[previous_page].url %}
                     <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                      <a href="{{ site.baseurl }}{{ prev_url | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ pages_sorted[previous_page].title }}">
                         Previous<br>
-                        <span>{{page.previous.title}}</span>
-                        </a>
+                        <span>{{ pages_sorted[previous_page].title }}</span>
+                      </a>
                     </li>
-                    {% endif %}
-                    {% if page.next.url %}
+                  {% endif %}
+                
+                  {% if next_page < pages_sorted.size %}
+                    {% assign next_url = pages_sorted[next_page].url %}
                     <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                      <a href="{{ site.baseurl }}{{ next_url | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ pages_sorted[next_page].title }}">
                         Next<br>
-                        <span>{{page.next.title}}</span>
-                        </a>
+                        <span>{{ pages_sorted[next_page].title }}</span>
+                      </a>
                     </li>
-                    {% endif %}
+                  {% endif %}
                 </ul>
                 <hr style="visibility: hidden;">
                 
+
                 
+                
+                <div class="wiki-index-tree">
+                    {% include wiki-subdirindex.html %}
+                </div>
                 
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
