@@ -5,7 +5,7 @@ subtitle: "EH"
 role: "none"
 role-index: "false"
 alter-index: "false"
-author: "HynDuf"
+author: "System"
 parent: null
 header-style: text
 category: 
@@ -13,7 +13,8 @@ category:
 permalink: /peritia/
 ---
 
-# HEllo
+## Hello 
+Hi,   
+We are the Peritia-System a (DID System)[/peritia/what-is/did].   
 
-## Inspiration 
-this is a test
+## Here are all the Alters: 
