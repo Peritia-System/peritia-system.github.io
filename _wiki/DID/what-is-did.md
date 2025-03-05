@@ -1,15 +1,16 @@
 ---
-layout: standard-post
+layout: standard-wiki
 title: "What is DID"
-subtitle: "EH"
+subtitle: "No we don't kill people and then not remember that we did...
+Alteast not to our Knowledge"
 role: "none"
 author: "System"
 parent: null
 header-style: text
 tags:
-  - Wiki
+  - Life
   - Peritia-System
-permalink: /peritia/what-is/did
+permalink: /wiki/did/what-is-did
 ---
 
 # DID 

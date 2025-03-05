@@ -16,6 +16,10 @@ collections:
     output: true
     permalink: /:collection/:path/
 
+  wiki:
+    output: true
+
+
 
 # SNS settings
 RSS: true
