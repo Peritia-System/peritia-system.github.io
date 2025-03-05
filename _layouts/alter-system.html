@@ -44,7 +44,17 @@ layout: default
                 <!-- 网易云跟帖 评论框 start -->
                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
                 <!-- 网易云跟帖 评论框 end -->
-                {% endif %}
+                {% endif %}<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-0
+                sidebar-container bottom">
+
+                <!-- Featured Tags -->
+                {% include featured-tags.html bottom=true %}
+
+                <!-- Friends Blog -->
+                {% include friends.html %}
+            </div>
             </div>  
 
     <!-- Side Catalog Container -->
@@ -65,17 +75,7 @@ layout: default
         {% endunless %}
 
     <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-10 col-md-offset-0
-                sidebar-container bottom">
-
-                <!-- Featured Tags -->
-                {% include featured-tags.html bottom=true %}
-
-                <!-- Friends Blog -->
-                {% include friends.html %}
-            </div>
+            
         </div>
     </div>
 </article>

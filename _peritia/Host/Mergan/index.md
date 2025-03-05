@@ -1,5 +1,5 @@
 ---
-layout: alter-system
+layout: standard-alter
 title: Mergan
 subtitle: Mergan Alter
 role: Host

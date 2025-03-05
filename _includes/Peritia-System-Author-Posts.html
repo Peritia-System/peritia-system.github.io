@@ -1,9 +1,12 @@
 <div class="related-files-by-alter">
   <a class="related-post-title">Files written by {{ page.author }}:</a>
-  
+
   <div class="related-posts">
       {% assign related_files = site.peritia | where: "author", page.author | sort: "date" | reverse %}
-      {% assign recent_files = related_files | slice: 0, 4 %} <!-- Get the most recent 4 files -->
+      {% assign related_posts = site.posts | where: "author", page.author | sort: "date" | reverse %}
+      
+      {% assign all_related_files = related_files | concat: related_posts %}
+      {% assign recent_files = all_related_files | slice: 0, 4 %} <!-- Get the most recent 4 files -->
 
       {% for file in recent_files %}
           {% if file.url != page.url %}
@@ -11,8 +14,6 @@
                   <span class="related-post-title">{{ file.title }}</span>
                   <i class="related-post-subtitle">{{ file.subtitle }}</i>
                 </a>
-                
-              </a>
           {% endif %}
       {% endfor %}
   </div>
