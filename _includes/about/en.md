@@ -2,7 +2,7 @@
 Hi there 👋, we are the Peritia System (short Peritia).
 
 ## Short about
-- We are a DID System [What is DID](/peritia/what-is/did)
+- We are a DID System [What is DID](/wiki/did/what-is-did)
 - 👨‍🎓 We are huge Linux Enthusiasts and work  in IT-System Administration. 
 - 📫 Fun facts: 
   - 💍 We are engaged (well [Mergan](/peritia/host/mergan) is)

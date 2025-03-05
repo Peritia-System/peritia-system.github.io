@@ -15,6 +15,6 @@ permalink: /peritia/
 
 ## Hello 
 Hi,   
-We are the Peritia-System a (DID System)[/peritia/what-is/did].   
+We are the Peritia-System a (DID System)[/wiki/did/what-is-did]   
 
 ## Here are all the Alters: 
