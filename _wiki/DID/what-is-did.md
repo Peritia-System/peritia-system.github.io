@@ -12,7 +12,7 @@ tags:
   - Peritia-System
 page_number: 2
 disabled: false
-permalink: /wiki/did/what/is/did
+permalink: /wiki/did/what-is-did
 ---
 
 # DID 
