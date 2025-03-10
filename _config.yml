@@ -18,7 +18,7 @@ collections:
 
   wiki:
     output: true
-    permalink: /wiki/:path/
+    permalink: /:collection/:path/
 
 
 
