@@ -13,4 +13,5 @@ category:
 permalink: /peritia/protector/
 ---
 # Protector
-Content for the Protector group.
+Own Wiki will come...
+> A protector is a headmate whose role is to protect other members of the system from external harm, traumatic memories, harmful members of the system, or other threats. [More](https://pluralpedia.org/w/Host)

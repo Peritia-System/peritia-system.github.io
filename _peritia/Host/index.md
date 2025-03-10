@@ -13,4 +13,8 @@ category:
 permalink: /peritia/host/
 ---
 # Host
-Content for the Host group.
+
+[What is a Host](/wiki/what-is-a-host)
+
+Own Wiki will come...
+> A host is the headmate who is most active, most responsible for day-to-day activities, or otherwise is fronting most often. [More](https://pluralpedia.org/w/Host)

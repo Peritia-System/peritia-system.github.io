@@ -13,4 +13,4 @@ category:
 permalink: /peritia/protector/rust/
 ---
 # Rust
-This is a filler content for Rust, explaining his role and backstory.
+This is a filler content for Rust.

@@ -1,7 +1,7 @@
 ---
 layout: alter-system
 title: Cat
-subtitle: Cat Alter
+subtitle:  Miau Miau
 role: Other
 role-index: false
 alter-index: true

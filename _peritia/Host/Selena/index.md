@@ -1,8 +1,8 @@
 ---
 layout: alter-system
 title: Selena
-subtitle: Selena Alter
-role: Host
+subtitle: For the Co-Host of this Show. She fronts most in School.
+role: Co-Host
 role-index: false
 alter-index: true
 author: Selena
@@ -13,4 +13,4 @@ category:
 permalink: /peritia/host/selena/
 ---
 # Selena
-This is a filler content for Selena, explaining her role and backstory.
+This is a filler content for Selena-
