@@ -1,6 +1,6 @@
 ---
 layout: standard-wiki
-title: "What is DID"
+title: "What is a Host"
 subtitle: "For the Show Hosts of the popular Series 'Life'! We all hate it :)"
 role: "none"
 author: "wiki"
